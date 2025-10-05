@@ -3,13 +3,14 @@ import gradio as gr  # Importing Gradio for creating the web interface
 import timm  # Importing timm for model management
 
 # Load the pre-trained model
-learn = load_learner('model.pkl')
+learn = load_learner(r'C:\Users\modri\Desktop\python\DSPraktikum\dspracticum2025\lesson03\Dataset\train\model.pkl')
 
 # Extract categories (class labels) from the DataLoader
 categories = learn.dls.vocab
 
 # Function to classify an image
 def classify_image(img):
+
     _, _, probs = learn.predict(img)
     return dict(zip(categories, map(float, probs)))  # Map categories to their probabilities
 
